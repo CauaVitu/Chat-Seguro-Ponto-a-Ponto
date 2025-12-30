@@ -1,8 +1,9 @@
-from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import padding as asym_padding
+from cryptography.hazmat.primitives import hashes, padding
 from cryptography.hazmat.primitives.ciphers import (
     Cipher, algorithms, modes
 )
+
 def rsa_encrypt(public_key, plaintext):
     ciphertext = public_key.encrypt(
         plaintext,
@@ -10,8 +11,8 @@ def rsa_encrypt(public_key, plaintext):
         # Garantimos que mensagens iguais tenham cifras diferentes a cada vez que são criptografadas.
         # MGF = Mask Generation Function, MGF1 é o único suportado atualmente.
         # algorithm = algoritmo de hash usado no OAEP. 
-        padding.OAEP(
-            mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        asym_padding.OAEP(
+            mgf=asym_padding.MGF1(algorithm=hashes.SHA256()),
             algorithm=hashes.SHA256(),
             label=None
         )
@@ -23,8 +24,8 @@ def rsa_decrypt(private_key, ciphertext):
     # Usamos os mesmos esquemas de padding e hash.
     plaintext = private_key.decrypt(
         ciphertext,
-        padding.OAEP(
-            mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        asym_padding.OAEP(
+            mgf=asym_padding.MGF1(algorithm=hashes.SHA256()),
             algorithm=hashes.SHA256(),
             label=None
         )
