@@ -5,6 +5,7 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.ciphers import (
     Cipher, algorithms, modes
 )
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 # Gera um par de chaves RSA (pública e privada).
 # O tamanho padrão é 2048 bits e o expoente público padrão é 65537.
@@ -51,6 +52,7 @@ def generate_aes_key(size = 256):
     #Função da biblioteca que gera uma chave segura e com entropia alta.
     key = AESGCM.generate_key(bit_length=size)
     return key
+
 
 
 
