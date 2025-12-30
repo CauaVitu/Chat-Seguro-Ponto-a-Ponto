@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Chaves e Segredos (Segurança das chaves)
+*.pem
+*.key
+*.bin
+
+# Sistema
+.DS_Store
