@@ -13,7 +13,9 @@ HOST = '127.0.0.1'
 PORT = 5556
 
 def iniciar_troca_segura():
-    tipo = input("Você quer ser (s)ervidor (B) ou (c)liente (A)? ").lower()
+    print ("Bem-vindo ao Chat Seguro Ponto-a-Ponto!")
+    print ("Digite 'sair' a qualquer momento para encerrar a conexão.")
+    tipo = input("Digite 's' para ser servidor ou 'c' para ser cliente: ").lower()
     
     sock = None
 
