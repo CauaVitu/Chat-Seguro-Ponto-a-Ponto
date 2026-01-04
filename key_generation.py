@@ -22,7 +22,7 @@ def generate_rsa_keypair(exponent=65537, size=2048):
 
 
 # Checa se a chave é privada ou pública e converte a chave em formato PEM (texto).
-def serialize_key (key):
+def serialize_key_rsa (key):
     if isinstance(key, rsa.RSAPrivateKey):
         pem = key.private_bytes(
             encoding=serialization.Encoding.PEM,
@@ -36,11 +36,11 @@ def serialize_key (key):
         )
     return pem
 
-def deserialize_public_key(pem_data):
+def deserialize_public_key_rsa(pem_data):
     # Transforma o texto da chave pública de volta em objeto.
     return serialization.load_pem_public_key(pem_data)
 
-def deserialize_private_key(pem_data):
+def deserialize_private_key_rsa(pem_data):
     # Transforma o texto da chave privada de volta em objeto
     # Usamos NoEncryption(), então o password=None (não tem senha).
     return serialization.load_pem_private_key(pem_data, password=None)
